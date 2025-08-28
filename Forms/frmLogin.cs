@@ -20,6 +20,7 @@ namespace DVLD_PresentationLayer.Forms
 
             if (Global.User != null) 
             {
+                SaveLoginInfo();
                 this.Hide();
                 Form main = new frmMain();
                 main.ShowDialog();
@@ -36,6 +37,38 @@ namespace DVLD_PresentationLayer.Forms
         {
             _userName = tbUserName.Text;
             _password = tbPassword.Text;
+        }
+        private void SaveLoginInfo() 
+        { 
+            if (chkRememberMe.Checked)
+            {
+                Properties.Settings.Default.RememberMe = true;
+                Properties.Settings.Default.UserName = tbUserName.Text;
+                Properties.Settings.Default.Password =tbPassword.Text; 
+            }
+            else
+            {
+                Properties.Settings.Default.RememberMe = false;
+                Properties.Settings.Default.UserName = "";
+                Properties.Settings.Default.Password = "";
+            }
+
+            Properties.Settings.Default.Save();
+        }
+        private void GetLoginInfo()
+        {
+            if (Properties.Settings.Default.RememberMe)
+            {
+                chkRememberMe.Checked = true;
+                tbUserName.Text = Properties.Settings.Default.UserName;
+                tbPassword.Text = Properties.Settings.Default.Password;
+            }
+
+        }
+        
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            GetLoginInfo();
         }
     }
 }
