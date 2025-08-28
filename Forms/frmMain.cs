@@ -16,5 +16,12 @@ namespace DVLD_PresentationLayer.Forms
             Global.User = new clsUser(); 
             this.Close();
         }
+
+        private void toolStripMenuItem2_Click(object sender, System.EventArgs e)
+        {
+            Form frm = new frmManagePeople();
+            frm.ShowDialog();
+            
+        }
     }
 }

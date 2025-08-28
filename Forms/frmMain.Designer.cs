@@ -68,6 +68,7 @@
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(91, 34);
             this.toolStripMenuItem2.Text = "People";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -100,7 +101,7 @@
             this.tsmi_LogOut.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.tsmi_LogOut.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_LogOut.Image")));
             this.tsmi_LogOut.Name = "tsmi_LogOut";
-            this.tsmi_LogOut.Size = new System.Drawing.Size(194, 36);
+            this.tsmi_LogOut.Size = new System.Drawing.Size(147, 30);
             this.tsmi_LogOut.Text = "LogOut";
             this.tsmi_LogOut.Click += new System.EventHandler(this.tsmi_LogOut_Click);
             // 
