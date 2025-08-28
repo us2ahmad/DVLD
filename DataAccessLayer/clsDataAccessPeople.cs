@@ -13,7 +13,7 @@ namespace DVLD_DataAccessLayer
             DataTable dt = new DataTable();
             SqlConnection sqlConnection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string sqlQuery = "SELECT * FROM People";
+            string sqlQuery = "SELECT PersonID , NationalNo , FirstName , SecondName , ThirdName , LastName , DateOfBirth , Gendor , Address , Phone , Email FROM People";
 
             SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
             

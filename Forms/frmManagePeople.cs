@@ -1,12 +1,6 @@
 ﻿using DVLD_BusinessLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer.Forms
@@ -20,14 +14,10 @@ namespace DVLD_PresentationLayer.Forms
 
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
-            dgvPeople.DataSource = clsPeople.GetAllPeople();
-           // var a = dgvPeople.Columns;
-            
+            DataTable dt = clsPeople.GetAllPeople();
+            dgvPeople.DataSource = dt;
+            lblRecCount.Text = dt.Columns.Count.ToString();
         }
 
-        private void LoadConfing()
-        {
-            
-        }
     }
 }
