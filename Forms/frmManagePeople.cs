@@ -11,13 +11,29 @@ namespace DVLD_PresentationLayer.Forms
         {
             InitializeComponent();
         }
-
+        DataTable dt;
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
-            DataTable dt = clsPeople.GetAllPeople();
-            dgvPeople.DataSource = dt;
-            lblRecCount.Text = dt.Columns.Count.ToString();
+            dt =  clsPeople.GetAllPeople();
+            dgvPeople.DataSource = dt;  
+            lblRecCount.Text = dt.Rows.Count.ToString();
         }
 
+        private void tbFilterBy_TextChanged(object sender, EventArgs e)
+        {
+            if(tbFilterBy.Text != "")
+            {
+                dt.DefaultView.RowFilter = $"{GetFilterBy()} = '{tbFilterBy.Text.ToString()}'";
+            }
+            else
+            {
+                dt.DefaultView.RowFilter = "";
+            }
+        }
+
+        private string GetFilterBy()
+        {
+            return cbFilterBy.SelectedItem.ToString();
+        }
     }
 }
