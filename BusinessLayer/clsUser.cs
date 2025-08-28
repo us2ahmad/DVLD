@@ -20,15 +20,14 @@ namespace DVLD_BusinessLayer
             IsActive = false;
         }
 
-        public clsUser(int UserID, int PersonID, string UserName,string Password, bool IsActive)
+        private clsUser(int userID, int personID, string userName, string password, bool isActive)
         {
-            this.UserID = UserID;
-            this.PersonID = PersonID;
-            this.UserName = UserName;
-            this.Password = Password;
-            this.IsActive = IsActive;
+            UserID = userID;
+            PersonID = personID;
+            UserName = userName;
+            Password = password;
+            IsActive = isActive;
         }
-
 
         public static clsUser Find(string UserName, string Password)
         {

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using DVLD_BusinessLayer;
+using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer.Forms
 {
@@ -8,6 +9,12 @@ namespace DVLD_PresentationLayer.Forms
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void tsmi_LogOut_Click(object sender, System.EventArgs e)
+        {
+            Global.User = new clsUser(); 
+            this.Close();
         }
     }
 }
