@@ -7,33 +7,89 @@ namespace DVLD_PresentationLayer.Forms
 {
     public partial class frmManagePeople : Form
     {
+        private DataTable _dt;
         public frmManagePeople()
         {
             InitializeComponent();
         }
-        DataTable dt;
+
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
-            dt =  clsPeople.GetAllPeople();
-            dgvPeople.DataSource = dt;  
-            lblRecCount.Text = dt.Rows.Count.ToString();
+            _dt = clsPeople.GetAllPeople();
+            dgvPeople.DataSource = _dt;
+            lblRecCount.Text = _dt.Rows.Count.ToString();
+          
+            cbFilterBy.SelectedIndex = 0;
+            tbFilterBy.Visible = false;
+            rbMale.Visible = rbFeMale.Visible = false;
         }
 
         private void tbFilterBy_TextChanged(object sender, EventArgs e)
         {
-            if(tbFilterBy.Text != "")
+            ApplyFilter();
+        }
+
+        private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedColumn = cbFilterBy.SelectedItem?.ToString() ?? "None";
+
+            if (selectedColumn == "None")
             {
-                dt.DefaultView.RowFilter = $"{GetFilterBy()} = '{tbFilterBy.Text.ToString()}'";
+                tbFilterBy.Visible = false;
+                rbMale.Visible = rbFeMale.Visible = false;
+                _dt.DefaultView.RowFilter = "";
+                return;
+            }
+
+            if (selectedColumn == "Gendor")
+            {
+                tbFilterBy.Visible = false;
+                rbMale.Visible = rbFeMale.Visible = true;
             }
             else
             {
-                dt.DefaultView.RowFilter = "";
+                tbFilterBy.Visible = true;
+                rbMale.Visible = rbFeMale.Visible = false;
             }
+
+            ApplyFilter();
         }
 
-        private string GetFilterBy()
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
         {
-            return cbFilterBy.SelectedItem.ToString();
+            if (rbMale.Checked)
+                ApplyFilter();
+        }
+
+        private void rbFeMale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbFeMale.Checked)
+                ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
+            string selectedColumn = cbFilterBy.SelectedItem?.ToString();
+            string filter = string.Empty;
+
+            if (string.IsNullOrEmpty(selectedColumn) || selectedColumn == "None")
+            {
+                _dt.DefaultView.RowFilter = "";
+            }
+            else if (selectedColumn == "Gendor")
+            {
+                if (rbMale.Checked)
+                    filter = "Gendor = 'Male'";
+                else if (rbFeMale.Checked)
+                    filter = "Gendor = 'Female'";
+            }
+            else if (!string.IsNullOrWhiteSpace(tbFilterBy.Text))
+            {
+                filter = $"{selectedColumn} LIKE '%{tbFilterBy.Text.Replace("'", "''")}%'";
+            }
+
+            _dt.DefaultView.RowFilter = filter;
+            lblRecCount.Text = dgvPeople.Rows.Count.ToString();
         }
     }
 }

@@ -13,7 +13,11 @@ namespace DVLD_DataAccessLayer
             DataTable dt = new DataTable();
             SqlConnection sqlConnection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string sqlQuery = "SELECT PersonID , NationalNo , FirstName , SecondName , ThirdName , LastName , DateOfBirth , Gendor , Address , Phone , Email FROM People";
+            string sqlQuery = 
+                "SELECT p.PersonID,p.NationalNo,p.FirstName,p.SecondName,p.ThirdName,p.LastName,p.DateOfBirth," +
+                " CASE WHEN p.Gendor = 0 THEN 'Male' ELSE 'FeMale' END AS Gendor ,p.Address,p.Phone,p.Email,c.CountryName" +
+                " FROM People p" +
+                " INNER JOIN Countries c ON c.CountryID = p.NationalityCountryID";
 
             SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
             

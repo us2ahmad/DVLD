@@ -37,6 +37,8 @@
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbFilterBy = new System.Windows.Forms.TextBox();
+            this.rbMale = new System.Windows.Forms.RadioButton();
+            this.rbFeMale = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -95,6 +97,7 @@
             // 
             // cbFilterBy
             // 
+            this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterBy.FormattingEnabled = true;
             this.cbFilterBy.Items.AddRange(new object[] {
             "None",
@@ -106,11 +109,13 @@
             "Gendor",
             "Address",
             "Phone",
-            "Email"});
+            "Email",
+            "CountryName"});
             this.cbFilterBy.Location = new System.Drawing.Point(99, 211);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(149, 21);
             this.cbFilterBy.TabIndex = 5;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilterBy_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -130,11 +135,38 @@
             this.tbFilterBy.TabIndex = 6;
             this.tbFilterBy.TextChanged += new System.EventHandler(this.tbFilterBy_TextChanged);
             // 
+            // rbMale
+            // 
+            this.rbMale.AutoSize = true;
+            this.rbMale.Checked = true;
+            this.rbMale.Location = new System.Drawing.Point(264, 211);
+            this.rbMale.Name = "rbMale";
+            this.rbMale.Size = new System.Drawing.Size(47, 17);
+            this.rbMale.TabIndex = 7;
+            this.rbMale.TabStop = true;
+            this.rbMale.Text = "Male";
+            this.rbMale.UseVisualStyleBackColor = true;
+            this.rbMale.Visible = false;
+            // 
+            // rbFeMale
+            // 
+            this.rbFeMale.AutoSize = true;
+            this.rbFeMale.Location = new System.Drawing.Point(317, 211);
+            this.rbFeMale.Name = "rbFeMale";
+            this.rbFeMale.Size = new System.Drawing.Size(59, 17);
+            this.rbFeMale.TabIndex = 7;
+            this.rbFeMale.Text = "FeMale";
+            this.rbFeMale.UseVisualStyleBackColor = true;
+            this.rbFeMale.Visible = false;
+            this.rbFeMale.CheckedChanged += new System.EventHandler(this.rbFeMale_CheckedChanged);
+            // 
             // frmManagePeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 668);
+            this.Controls.Add(this.rbFeMale);
+            this.Controls.Add(this.rbMale);
             this.Controls.Add(this.tbFilterBy);
             this.Controls.Add(this.cbFilterBy);
             this.Controls.Add(this.lblRecCount);
@@ -143,6 +175,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvPeople);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmManagePeople";
@@ -166,5 +199,7 @@
         private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbFilterBy;
+        private System.Windows.Forms.RadioButton rbMale;
+        private System.Windows.Forms.RadioButton rbFeMale;
     }
 }
