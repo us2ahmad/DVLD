@@ -91,5 +91,35 @@ namespace DVLD_PresentationLayer.Forms
             _dt.DefaultView.RowFilter = filter;
             lblRecCount.Text = dgvPeople.Rows.Count.ToString();
         }
+
+        private void tsmiShowDetails_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Show Details");
+        }
+
+        private void tsmiAddNewPerson_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Add New Person");
+        }
+
+        private void tsmiEditPerson_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show( "Edit Person");
+        }
+
+        private void tsmiDeletePerson_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show( "Delete Person");
+        }
+
+        private void tsmiSendEmailToPerson_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Send Email To Person");
+        }
+
+        private void tsmiPhoneCallPerson_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Phone Call Person");
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagePeople));
             this.dgvPeople = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,8 +40,18 @@
             this.tbFilterBy = new System.Windows.Forms.TextBox();
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.rbFeMale = new System.Windows.Forms.RadioButton();
+            this.cmsPeopleGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiShowDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiAddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEditPerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDeletePerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiSendEmailToPerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPhoneCallPerson = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.cmsPeopleGrid.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvPeople
@@ -49,6 +60,7 @@
             this.dgvPeople.AllowUserToDeleteRows = false;
             this.dgvPeople.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPeople.ContextMenuStrip = this.cmsPeopleGrid;
             this.dgvPeople.Location = new System.Drawing.Point(12, 240);
             this.dgvPeople.Name = "dgvPeople";
             this.dgvPeople.ReadOnly = true;
@@ -160,6 +172,78 @@
             this.rbFeMale.Visible = false;
             this.rbFeMale.CheckedChanged += new System.EventHandler(this.rbFeMale_CheckedChanged);
             // 
+            // cmsPeopleGrid
+            // 
+            this.cmsPeopleGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiShowDetails,
+            this.toolStripSeparator1,
+            this.tsmiAddNewPerson,
+            this.tsmiEditPerson,
+            this.tsmiDeletePerson,
+            this.toolStripSeparator2,
+            this.tsmiSendEmailToPerson,
+            this.tsmiPhoneCallPerson});
+            this.cmsPeopleGrid.Name = "cmsPeopleGrid";
+            this.cmsPeopleGrid.Size = new System.Drawing.Size(181, 170);
+            // 
+            // tsmiShowDetails
+            // 
+            this.tsmiShowDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmiShowDetails.Image")));
+            this.tsmiShowDetails.Name = "tsmiShowDetails";
+            this.tsmiShowDetails.Size = new System.Drawing.Size(180, 22);
+            this.tsmiShowDetails.Text = "Show Details";
+            this.tsmiShowDetails.Click += new System.EventHandler(this.tsmiShowDetails_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // tsmiAddNewPerson
+            // 
+            this.tsmiAddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmiAddNewPerson.Image")));
+            this.tsmiAddNewPerson.Name = "tsmiAddNewPerson";
+            this.tsmiAddNewPerson.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAddNewPerson.Text = "Add New Person";
+            this.tsmiAddNewPerson.Click += new System.EventHandler(this.tsmiAddNewPerson_Click);
+            // 
+            // tsmiEditPerson
+            // 
+            this.tsmiEditPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmiEditPerson.Image")));
+            this.tsmiEditPerson.Name = "tsmiEditPerson";
+            this.tsmiEditPerson.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEditPerson.Text = "Edit";
+            this.tsmiEditPerson.Click += new System.EventHandler(this.tsmiEditPerson_Click);
+            // 
+            // tsmiDeletePerson
+            // 
+            this.tsmiDeletePerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmiDeletePerson.Image")));
+            this.tsmiDeletePerson.Name = "tsmiDeletePerson";
+            this.tsmiDeletePerson.Size = new System.Drawing.Size(180, 22);
+            this.tsmiDeletePerson.Text = "Delete";
+            this.tsmiDeletePerson.Click += new System.EventHandler(this.tsmiDeletePerson_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // tsmiSendEmailToPerson
+            // 
+            this.tsmiSendEmailToPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmiSendEmailToPerson.Image")));
+            this.tsmiSendEmailToPerson.Name = "tsmiSendEmailToPerson";
+            this.tsmiSendEmailToPerson.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSendEmailToPerson.Text = "Send Email";
+            this.tsmiSendEmailToPerson.Click += new System.EventHandler(this.tsmiSendEmailToPerson_Click);
+            // 
+            // tsmiPhoneCallPerson
+            // 
+            this.tsmiPhoneCallPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmiPhoneCallPerson.Image")));
+            this.tsmiPhoneCallPerson.Name = "tsmiPhoneCallPerson";
+            this.tsmiPhoneCallPerson.Size = new System.Drawing.Size(180, 22);
+            this.tsmiPhoneCallPerson.Text = "Phone Call";
+            this.tsmiPhoneCallPerson.Click += new System.EventHandler(this.tsmiPhoneCallPerson_Click);
+            // 
             // frmManagePeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,6 +268,7 @@
             this.Load += new System.EventHandler(this.frmManagePeople_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.cmsPeopleGrid.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,5 +286,14 @@
         private System.Windows.Forms.TextBox tbFilterBy;
         private System.Windows.Forms.RadioButton rbMale;
         private System.Windows.Forms.RadioButton rbFeMale;
+        private System.Windows.Forms.ContextMenuStrip cmsPeopleGrid;
+        private System.Windows.Forms.ToolStripMenuItem tsmiShowDetails;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAddNewPerson;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEditPerson;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDeletePerson;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSendEmailToPerson;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPhoneCallPerson;
     }
 }
