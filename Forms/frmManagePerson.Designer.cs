@@ -1,6 +1,6 @@
 ﻿namespace DVLD_PresentationLayer.Forms
 {
-    partial class frmManagePeople
+    partial class frmManagePerson
     {
         /// <summary>
         /// Required designer variable.
@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagePeople));
-            this.dgvPeople = new System.Windows.Forms.DataGridView();
-            this.cmsPeopleGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManagePerson));
+            this.dgvPerson = new System.Windows.Forms.DataGridView();
+            this.cmsPersonGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiShowDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiAddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,30 +49,30 @@
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.rbFeMale = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
-            this.cmsPeopleGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPerson)).BeginInit();
+            this.cmsPersonGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvPeople
+            // dgvPerson
             // 
-            this.dgvPeople.AllowUserToAddRows = false;
-            this.dgvPeople.AllowUserToDeleteRows = false;
-            this.dgvPeople.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgvPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPeople.ContextMenuStrip = this.cmsPeopleGrid;
-            this.dgvPeople.Location = new System.Drawing.Point(14, 295);
-            this.dgvPeople.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dgvPeople.Name = "dgvPeople";
-            this.dgvPeople.ReadOnly = true;
-            this.dgvPeople.RowHeadersWidth = 51;
-            this.dgvPeople.Size = new System.Drawing.Size(1407, 446);
-            this.dgvPeople.TabIndex = 0;
+            this.dgvPerson.AllowUserToAddRows = false;
+            this.dgvPerson.AllowUserToDeleteRows = false;
+            this.dgvPerson.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvPerson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPerson.ContextMenuStrip = this.cmsPersonGrid;
+            this.dgvPerson.Location = new System.Drawing.Point(14, 295);
+            this.dgvPerson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvPerson.Name = "dgvPerson";
+            this.dgvPerson.ReadOnly = true;
+            this.dgvPerson.RowHeadersWidth = 51;
+            this.dgvPerson.Size = new System.Drawing.Size(1407, 446);
+            this.dgvPerson.TabIndex = 0;
             // 
-            // cmsPeopleGrid
+            // cmsPersonGrid
             // 
-            this.cmsPeopleGrid.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsPeopleGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsPersonGrid.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsPersonGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiShowDetails,
             this.toolStripSeparator1,
             this.tsmiAddNewPerson,
@@ -81,8 +81,8 @@
             this.toolStripSeparator2,
             this.tsmiSendEmailToPerson,
             this.tsmiPhoneCallPerson});
-            this.cmsPeopleGrid.Name = "cmsPeopleGrid";
-            this.cmsPeopleGrid.Size = new System.Drawing.Size(192, 172);
+            this.cmsPersonGrid.Name = "cmsPersonGrid";
+            this.cmsPersonGrid.Size = new System.Drawing.Size(192, 172);
             // 
             // tsmiShowDetails
             // 
@@ -151,7 +151,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(317, 53);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Manage People";
+            this.label1.Text = "Manage Person";
             // 
             // lblRecord
             // 
@@ -257,7 +257,7 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // frmManagePeople
+            // frmManagePerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -271,17 +271,17 @@
             this.Controls.Add(this.lblRecord);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgvPeople);
+            this.Controls.Add(this.dgvPerson);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmManagePeople";
+            this.Name = "frmManagePerson";
             this.ShowIcon = false;
-            this.Text = "frmManagePeople";
-            this.Load += new System.EventHandler(this.frmManagePeople_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).EndInit();
-            this.cmsPeopleGrid.ResumeLayout(false);
+            this.Text = "frmManagePerson";
+            this.Load += new System.EventHandler(this.frmManagePerson_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPerson)).EndInit();
+            this.cmsPersonGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -290,7 +290,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvPeople;
+        private System.Windows.Forms.DataGridView dgvPerson;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblRecord;
@@ -300,7 +300,7 @@
         private System.Windows.Forms.TextBox tbFilterBy;
         private System.Windows.Forms.RadioButton rbMale;
         private System.Windows.Forms.RadioButton rbFeMale;
-        private System.Windows.Forms.ContextMenuStrip cmsPeopleGrid;
+        private System.Windows.Forms.ContextMenuStrip cmsPersonGrid;
         private System.Windows.Forms.ToolStripMenuItem tsmiShowDetails;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsmiAddNewPerson;

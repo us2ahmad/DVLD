@@ -6,7 +6,7 @@ using System.Net;
 
 namespace DVLD_BusinessLayer
 {
-    public class clsPeople
+    public class clsPerson
     {
      
         public int PersonID { set; get; }
@@ -23,7 +23,7 @@ namespace DVLD_BusinessLayer
         public int NationalityCountryID { set; get; }
         public string ImagePath { set; get; }
 
-        public clsPeople()
+        public clsPerson()
         {
             PersonID = -1;
             NationalNo = string.Empty;
@@ -40,7 +40,7 @@ namespace DVLD_BusinessLayer
             ImagePath = string.Empty;
         }
 
-        private clsPeople(int personID, string nationalNo, string firstName, string secondName, string thirdName, 
+        private clsPerson(int personID, string nationalNo, string firstName, string secondName, string thirdName, 
                     string lastName, DateTime dateOfBirth, bool gendor, string address, string phone, string email, int nationalityCountryID, string imagePath)
         {
             PersonID = personID;
@@ -58,17 +58,27 @@ namespace DVLD_BusinessLayer
             ImagePath = imagePath;
         }
 
-        public static clsPeople Find(int PersonID)
+        public static clsPerson GetPersonByID(int PersonID)
         {
-            int personID; string nationalNo; string firstName; string secondName; string thirdName; string lastName;
-            DateTime dateOfBirth; bool gendor; string address; string phone; string email; int nationalityCountryID; string imagePath;
-           
+             string 
+                nationalNo = string.Empty, firstName = string.Empty, secondName = string.Empty, 
+                thirdName = string.Empty, lastName = string.Empty, phone = string.Empty, address = string.Empty,
+                email = string.Empty, imagePath = string.Empty;
+
+            DateTime dateOfBirth = DateTime.Now; bool gendor = false; int nationalityCountryID = -1;
+
+            if (clsDataAccessPerson.GetPersonByID(PersonID, ref nationalNo,ref firstName,ref secondName, ref thirdName, ref lastName
+                , ref dateOfBirth, ref gendor, ref address, ref phone, ref email, ref nationalityCountryID, ref imagePath))
+            {
+                return new clsPerson(PersonID,nationalNo,firstName,secondName,thirdName,lastName,dateOfBirth,gendor,
+                    address,phone,email,nationalityCountryID,imagePath);
+            }
             return null;
         }
 
-        public static DataTable GetAllPeople()
+        public static DataTable GetAllPerson()
         {
-            return clsDataAccessPeople.GetAllPeople();
+            return clsDataAccessPerson.GetAllPerson();
         }
     }
 }

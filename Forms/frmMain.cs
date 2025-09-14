@@ -19,7 +19,7 @@ namespace DVLD_PresentationLayer.Forms
 
         private void toolStripMenuItem2_Click(object sender, System.EventArgs e)
         {
-            Form frm = new frmManagePeople();
+            Form frm = new frmManagePerson();
             frm.ShowDialog();
             
         }

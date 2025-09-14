@@ -1,22 +1,23 @@
 ﻿using DVLD_BusinessLayer;
+using DVLD_PresentationLayer.Controls;
 using System;
 using System.Data;
 using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer.Forms
 {
-    public partial class frmManagePeople : Form
+    public partial class frmManagePerson : Form
     {
         private DataTable _dt;
-        public frmManagePeople()
+        public frmManagePerson()
         {
             InitializeComponent();
         }
 
-        private void frmManagePeople_Load(object sender, EventArgs e)
+        private void frmManagePerson_Load(object sender, EventArgs e)
         {
-            _dt = clsPeople.GetAllPeople();
-            dgvPeople.DataSource = _dt;
+            _dt = clsPerson.GetAllPerson();
+            dgvPerson.DataSource = _dt;
             lblRecCount.Text = _dt.Rows.Count.ToString();
           
             cbFilterBy.SelectedIndex = 0;
@@ -89,11 +90,13 @@ namespace DVLD_PresentationLayer.Forms
             }
 
             _dt.DefaultView.RowFilter = filter;
-            lblRecCount.Text = dgvPeople.Rows.Count.ToString();
+            lblRecCount.Text = dgvPerson.Rows.Count.ToString();
         }
 
         private void tsmiShowDetails_Click(object sender, EventArgs e)
         {
+            int personID = (int)dgvPerson.CurrentRow.Cells[0].Value;
+            ctrlShowPersonDetalis ctrl = new ctrlShowPersonDetalis(personID);
             MessageBox.Show("Show Details");
         }
 
