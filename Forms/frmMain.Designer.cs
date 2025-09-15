@@ -105,7 +105,7 @@
             this.tsmi_LogOut.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.tsmi_LogOut.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_LogOut.Image")));
             this.tsmi_LogOut.Name = "tsmi_LogOut";
-            this.tsmi_LogOut.Size = new System.Drawing.Size(194, 36);
+            this.tsmi_LogOut.Size = new System.Drawing.Size(147, 30);
             this.tsmi_LogOut.Text = "LogOut";
             this.tsmi_LogOut.Click += new System.EventHandler(this.tsmi_LogOut_Click);
             // 
@@ -119,7 +119,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frmMain";
-            this.Text = "frmMain";
+            this.ShowIcon = false;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

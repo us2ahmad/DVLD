@@ -1,5 +1,6 @@
 ﻿using DVLD_BusinessLayer;
 using DVLD_PresentationLayer.Controls;
+using DVLD_PresentationLayer.Forms.People;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -96,8 +97,8 @@ namespace DVLD_PresentationLayer.Forms
         private void tsmiShowDetails_Click(object sender, EventArgs e)
         {
             int personID = (int)dgvPerson.CurrentRow.Cells[0].Value;
-            ctrlShowPersonDetalis ctrl = new ctrlShowPersonDetalis(personID);
-            MessageBox.Show("Show Details");
+            frmPersonDetails form = new frmPersonDetails(personID);
+            form.ShowDialog();
         }
 
         private void tsmiAddNewPerson_Click(object sender, EventArgs e)
