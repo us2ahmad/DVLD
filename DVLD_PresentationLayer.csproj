@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ctrlCountryComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctrlCountryComboBox.Designer.cs">
+      <DependentUpon>ctrlCountryComboBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ctrlShowPersonDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\ctrlCountryComboBox.resx">
+      <DependentUpon>ctrlCountryComboBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ctrlShowPersonDetails.resx">
       <DependentUpon>ctrlShowPersonDetails.cs</DependentUpon>
     </EmbeddedResource>

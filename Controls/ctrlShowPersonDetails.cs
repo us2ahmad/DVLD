@@ -24,7 +24,7 @@ namespace DVLD_PresentationLayer.Controls
                 lbl_Address.Text = _Person.Address;
                 lbl_Phone.Text = _Person.Phone;
                 lbl_DateOfBirth.Text = _Person.DateOfBirth.ToString();
-                lbl_Country.Text = _Person.NationalityCountryID.ToString();
+                lbl_Country.Text = clsCountry.GetNameByID( _Person.NationalityCountryID);
             }
         }
 
