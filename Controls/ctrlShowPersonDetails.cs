@@ -17,7 +17,7 @@ namespace DVLD_PresentationLayer.Controls
             if (_Person != null)
             {
                 lbl_PersonID.Text = _Person.PersonID.ToString();
-                lbl_Name.Text = _Person.FirstName + _Person.SecondName + _Person.ThirdName + _Person.LastName;
+                lbl_Name.Text = $"{_Person.FirstName} {_Person.SecondName } {_Person.ThirdName} {_Person.LastName}";
                 lbl_NationalNo.Text = _Person.NationalNo;
                 lbl_Gendor.Text = _Person.Gendor ? "Male":"FeMale";
                 lbl_Email.Text = _Person.Email;

@@ -125,5 +125,15 @@ namespace DVLD_PresentationLayer.Forms
         {
             MessageBox.Show("Phone Call Person");
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAddPerson_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Add New Person");
+        }
     }
 }

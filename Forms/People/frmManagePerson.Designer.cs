@@ -49,6 +49,8 @@
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.rbFeMale = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnAddPerson = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPerson)).BeginInit();
             this.cmsPersonGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -247,11 +249,42 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.White;
+            this.btnClose.BackgroundImage = global::DVLD_PresentationLayer.Properties.Resources.Close_32;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnClose.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnClose.Location = new System.Drawing.Point(1093, 621);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(125, 35);
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnAddPerson
+            // 
+            this.btnAddPerson.BackColor = System.Drawing.Color.White;
+            this.btnAddPerson.BackgroundImage = global::DVLD_PresentationLayer.Properties.Resources.Add_Person_40;
+            this.btnAddPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAddPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPerson.Location = new System.Drawing.Point(1153, 188);
+            this.btnAddPerson.Name = "btnAddPerson";
+            this.btnAddPerson.Size = new System.Drawing.Size(65, 44);
+            this.btnAddPerson.TabIndex = 9;
+            this.btnAddPerson.UseVisualStyleBackColor = false;
+            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
+            // 
             // frmManagePerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 668);
+            this.Controls.Add(this.btnAddPerson);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.rbFeMale);
             this.Controls.Add(this.rbMale);
             this.Controls.Add(this.tbFilterBy);
@@ -267,6 +300,7 @@
             this.MinimizeBox = false;
             this.Name = "frmManagePerson";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Manage Person";
             this.Load += new System.EventHandler(this.frmManagePerson_Load);
@@ -299,5 +333,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem tsmiSendEmailToPerson;
         private System.Windows.Forms.ToolStripMenuItem tsmiPhoneCallPerson;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnAddPerson;
     }
 }

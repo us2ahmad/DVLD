@@ -58,10 +58,12 @@
             this.ClientSize = new System.Drawing.Size(796, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ctrlShowPersonDetails1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmPersonDetails";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Person Details";
             this.ResumeLayout(false);
