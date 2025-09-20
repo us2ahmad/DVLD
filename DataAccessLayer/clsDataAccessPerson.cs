@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_DataAccessLayer.Dtos;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Net;
@@ -46,12 +47,9 @@ namespace DVLD_DataAccessLayer
             return dt;
         }
 
-        public static bool GetPersonByID(int PersonID, ref string NationalNo, ref string FirstName,
-         ref string SecondName, ref string ThirdName, ref string LastName, ref DateTime DateOfBirth,
-         ref bool Gendor, ref string Address,ref string Phone,ref string Email,ref int NationalityCountryID,
-         ref string ImagePath)
-
+        public static bool GetPersonByID(int PersonID,out PersonDto personDto)
         {
+            personDto = null;
             bool isFound = false;
             SqlConnection sqlConnection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
@@ -68,20 +66,23 @@ namespace DVLD_DataAccessLayer
 
                 if (reader.Read())
                 {
-                    PersonID = Types.GetInt(reader, "PersonID");
-                    NationalNo = Types.GetString(reader, "NationalNo");
-                    FirstName  = Types.GetString(reader, "FirstName"); 
-                    SecondName = Types.GetString(reader, "SecondName"); 
-                    ThirdName = Types.GetString(reader, "ThirdName"); 
-                    LastName = Types.GetString(reader, "LastName");
-                    DateOfBirth = Types.GetDateTime(reader, "DateOfBirth");
-                    Gendor = Types.GetBool(reader, "Gendor"); 
-                    Address = Types.GetString(reader, "Address") ;
-                    Phone = Types.GetString(reader, "Phone"); 
-                    Email = Types.GetString(reader, "Email"); 
-                    NationalityCountryID = Types.GetInt(reader, "NationalityCountryID");
-                    ImagePath = Types.GetString(reader, "ImagePath");
-                    
+                    personDto = new PersonDto
+                    {
+                        PersonID = Types.GetInt(reader, "PersonID"),
+                        NationalNo = Types.GetString(reader, "NationalNo"),
+                        FirstName = Types.GetString(reader, "FirstName"),
+                        SecondName = Types.GetString(reader, "SecondName"),
+                        ThirdName = Types.GetString(reader, "ThirdName"),
+                        LastName = Types.GetString(reader, "LastName"),
+                        DateOfBirth = Types.GetDateTime(reader, "DateOfBirth"),
+                        Gendor = Types.GetBool(reader, "Gendor"),
+                        Address = Types.GetString(reader, "Address"),
+                        Phone = Types.GetString(reader, "Phone"),
+                        Email = Types.GetString(reader, "Email"),
+                        NationalityCountryID = Types.GetInt(reader, "NationalityCountryID"),
+                        ImagePath = Types.GetString(reader, "ImagePath")
+                    };
+                   
                     isFound = true;
                 }
                 reader.Close();

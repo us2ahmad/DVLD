@@ -1,4 +1,5 @@
 ﻿using DVLD_DataAccessLayer;
+using DVLD_DataAccessLayer.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -40,6 +41,23 @@ namespace DVLD_BusinessLayer
             ImagePath = string.Empty;
         }
 
+        public clsPerson(PersonDto personDto)
+        {
+            PersonID = personDto.PersonID;
+            NationalNo = personDto.NationalNo;
+            FirstName = personDto.FirstName;
+            SecondName = personDto.SecondName;
+            ThirdName = personDto.ThirdName;
+            LastName = personDto.LastName;
+            DateOfBirth = personDto.DateOfBirth;
+            Gendor = personDto.Gendor;
+            Address = personDto.Address;
+            Phone = personDto.Phone;
+            Email = personDto.Email;
+            NationalityCountryID = personDto.NationalityCountryID;
+            ImagePath = personDto.ImagePath;
+        }
+
         private clsPerson(int personID, string nationalNo, string firstName, string secondName, string thirdName, 
                     string lastName, DateTime dateOfBirth, bool gendor, string address, string phone, string email, int nationalityCountryID, string imagePath)
         {
@@ -60,18 +78,9 @@ namespace DVLD_BusinessLayer
 
         public static clsPerson GetPersonByID(int PersonID)
         {
-             string 
-                nationalNo = string.Empty, firstName = string.Empty, secondName = string.Empty, 
-                thirdName = string.Empty, lastName = string.Empty, phone = string.Empty, address = string.Empty,
-                email = string.Empty, imagePath = string.Empty;
-
-            DateTime dateOfBirth = DateTime.Now; bool gendor = false; int nationalityCountryID = -1;
-
-            if (clsDataAccessPerson.GetPersonByID(PersonID, ref nationalNo,ref firstName,ref secondName, ref thirdName, ref lastName
-                , ref dateOfBirth, ref gendor, ref address, ref phone, ref email, ref nationalityCountryID, ref imagePath))
+            if (clsDataAccessPerson.GetPersonByID(PersonID,out PersonDto personDto))
             {
-                return new clsPerson(PersonID,nationalNo,firstName,secondName,thirdName,lastName,dateOfBirth,gendor,
-                    address,phone,email,nationalityCountryID,imagePath);
+                return new clsPerson(personDto);
             }
             return null;
         }

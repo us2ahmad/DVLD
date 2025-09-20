@@ -1,12 +1,14 @@
-﻿using System;
+﻿using DVLD_DataAccessLayer.Dtos;
+using System;
 using System.Data.SqlClient;
 
 namespace DVLD_DataAccessLayer
 {
     public class clsDataAccessUser
     {
-        public static  bool FindUser(string userName,string password,ref int UserID,ref int PersonID, ref bool IsActive)
+        public static  bool FindUser(string userName,string password ,out UserDto userDto)
         {
+            userDto = null;
             bool isFound = false;
 
             SqlConnection sqlConnection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -25,10 +27,16 @@ namespace DVLD_DataAccessLayer
 
                 if (reader.Read())
                 {
+                    userDto = new UserDto
+                    {
+                        UserID = Types.GetInt(reader, "UserID"),
+                        UserName = Types.GetString(reader, "UserName"),
+                        Password = Types.GetString(reader, "Password"),
+                        PersonID = Types.GetInt(reader, "PersonID"),
+                        IsActive = Types.GetBool(reader, "IsActive")
+                    };
+
                     isFound = true;
-                    UserID = Types.GetInt(reader, "UserID");
-                    PersonID = Types.GetInt(reader, "PersonID");
-                    IsActive = Types.GetBool(reader, "IsActive");
                 }
                 reader.Close();
 
@@ -44,6 +52,5 @@ namespace DVLD_DataAccessLayer
 
             return isFound;
         }
-
     }
 }

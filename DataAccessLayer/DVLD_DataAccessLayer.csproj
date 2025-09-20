@@ -45,6 +45,9 @@
     <Compile Include="clsDataAccessPerson.cs" />
     <Compile Include="clsDataAccessSettings.cs" />
     <Compile Include="clsDataAccessUser.cs" />
+    <Compile Include="Dtos\CountryDto.cs" />
+    <Compile Include="Dtos\PersonDto.cs" />
+    <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types.cs" />
   </ItemGroup>

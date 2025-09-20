@@ -1,5 +1,6 @@
 ﻿using System;
 using DVLD_DataAccessLayer;
+using DVLD_DataAccessLayer.Dtos;
 
 namespace DVLD_BusinessLayer
 {
@@ -20,6 +21,15 @@ namespace DVLD_BusinessLayer
             IsActive = false;
         }
 
+        public clsUser(UserDto userDto)
+        {
+            UserID = userDto.UserID;
+            PersonID = userDto.PersonID;
+            UserName = userDto.UserName;
+            Password = userDto.Password;
+            IsActive = userDto.IsActive;
+        }
+
         private clsUser(int userID, int personID, string userName, string password, bool isActive)
         {
             UserID = userID;
@@ -31,16 +41,11 @@ namespace DVLD_BusinessLayer
 
         public static clsUser Find(string UserName, string Password)
         {
-            int UserID = -1, PersonID= -1;
-            bool IsActive = false;
-
-            if (clsDataAccessUser.FindUser(UserName, Password,ref UserID, ref PersonID, ref IsActive))
+            if (clsDataAccessUser.FindUser(UserName, Password, out UserDto userDto))
             {
-                return new clsUser(UserID, PersonID, UserName, Password,IsActive);
+                return new clsUser(userDto);
             }
-
             return null;
         }
-
     }
 }
