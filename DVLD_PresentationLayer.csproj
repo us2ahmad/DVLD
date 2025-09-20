@@ -61,10 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Add_UpdatePerson.cs">
+    <Compile Include="People\Controls\Add_UpdatePerson.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Add_UpdatePerson.Designer.cs">
+    <Compile Include="People\Controls\Add_UpdatePerson.Designer.cs">
       <DependentUpon>Add_UpdatePerson.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ctrlCountryComboBox.cs">
@@ -73,59 +73,65 @@
     <Compile Include="Controls\ctrlCountryComboBox.Designer.cs">
       <DependentUpon>ctrlCountryComboBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ctrlShowPersonDetails.cs">
+    <Compile Include="People\Controls\ctrlShowPersonDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ctrlShowPersonDetails.Designer.cs">
+    <Compile Include="People\Controls\ctrlShowPersonDetails.Designer.cs">
       <DependentUpon>ctrlShowPersonDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLogin.cs">
+    <Compile Include="Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLogin.Designer.cs">
+    <Compile Include="Login\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmMain.cs">
+    <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMain.Designer.cs">
+    <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\People\frmManagePerson.cs">
+    <Compile Include="People\frmManagePerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\People\frmManagePerson.Designer.cs">
+    <Compile Include="People\frmManagePerson.Designer.cs">
       <DependentUpon>frmManagePerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\People\frmPersonDetails.cs">
+    <Compile Include="People\frmPersonDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\People\frmPersonDetails.Designer.cs">
+    <Compile Include="People\frmPersonDetails.Designer.cs">
       <DependentUpon>frmPersonDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Global.cs" />
+    <Compile Include="GlobalClasses\Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\Add_UpdatePerson.resx">
+    <Compile Include="User\frmManageUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\frmManageUser.Designer.cs">
+      <DependentUpon>frmManageUser.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="People\Controls\Add_UpdatePerson.resx">
       <DependentUpon>Add_UpdatePerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ctrlCountryComboBox.resx">
       <DependentUpon>ctrlCountryComboBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ctrlShowPersonDetails.resx">
+    <EmbeddedResource Include="People\Controls\ctrlShowPersonDetails.resx">
       <DependentUpon>ctrlShowPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.resx">
+    <EmbeddedResource Include="Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMain.resx">
+    <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\People\frmManagePerson.resx">
+    <EmbeddedResource Include="People\frmManagePerson.resx">
       <DependentUpon>frmManagePerson.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\People\frmPersonDetails.resx">
+    <EmbeddedResource Include="People\frmPersonDetails.resx">
       <DependentUpon>frmPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
