@@ -1,4 +1,5 @@
 ﻿using DVLD_BusinessLayer;
+using DVLD_BusinessLayer.Events;
 using DVLD_PresentationLayer.Controls;
 using DVLD_PresentationLayer.Forms.People;
 using System;
@@ -17,15 +18,30 @@ namespace DVLD_PresentationLayer.Forms
 
         private void frmManagePerson_Load(object sender, EventArgs e)
         {
-            _dt = clsPerson.GetAllPerson();
-            dgvPerson.DataSource = _dt;
-            lblRecCount.Text = _dt.Rows.Count.ToString();
-          
+            LoadPeopleData();
+
             cbFilterBy.SelectedIndex = 0;
             tbFilterBy.Visible = false;
             rbMale.Visible = rbFeMale.Visible = false;
+
+            PersonEvents.PersonChanged += RefreshPeopleData;
         }
 
+        private void LoadPeopleData()
+        {
+            _dt = clsPerson.GetAllPerson();
+            dgvPerson.DataSource = _dt;
+            lblRecCount.Text = _dt.Rows.Count.ToString();
+        }
+
+        private void RefreshPeopleData()
+        {
+            LoadPeopleData();
+        }
+        private void frmManagePerson_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            PersonEvents.PersonChanged -= RefreshPeopleData;
+        }
         private void tbFilterBy_TextChanged(object sender, EventArgs e)
         {
             ApplyFilter();
@@ -113,7 +129,8 @@ namespace DVLD_PresentationLayer.Forms
 
         private void tsmiDeletePerson_Click(object sender, EventArgs e)
         {
-            MessageBox.Show( "Delete Person");
+            int personID = (int)dgvPerson.CurrentRow.Cells[0].Value;
+            clsPerson.DeletePerson(personID);
         }
 
         private void tsmiSendEmailToPerson_Click(object sender, EventArgs e)
@@ -135,5 +152,6 @@ namespace DVLD_PresentationLayer.Forms
         {
             MessageBox.Show("Add New Person");
         }
+
     }
 }

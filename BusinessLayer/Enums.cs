@@ -6,5 +6,9 @@ using System.Threading.Tasks;
 
 namespace DVLD_BusinessLayer
 {
-   
+    public enum enMode
+    {
+        Add = 0,
+        Update = 1,
+    }
 }

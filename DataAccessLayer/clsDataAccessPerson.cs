@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Net;
 
 namespace DVLD_DataAccessLayer
 {
@@ -11,7 +10,6 @@ namespace DVLD_DataAccessLayer
 
         public static DataTable GetAllPerson()
         {
-
             DataTable dt = new DataTable();
             SqlConnection sqlConnection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
@@ -46,7 +44,6 @@ namespace DVLD_DataAccessLayer
 
             return dt;
         }
-
         public static bool GetPersonByID(int PersonID,out PersonDto personDto)
         {
             personDto = null;
@@ -98,6 +95,132 @@ namespace DVLD_DataAccessLayer
             }
 
             return isFound;
+        }
+    
+        public static int AddPerson(PersonDto personDto)
+        {
+            int personID = -1;
+            SqlConnection sqlConnection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string sqlQuery = 
+                "INSERT INTO [People] " +
+                "([NationalNo],[FirstName],[SecondName],[ThirdName],[LastName],[DateOfBirth],[Gendor],[Address],[Phone],[Email],[NationalityCountryID],[ImagePath]) " +
+                "VALUES(@NationalNo,@FirstName,@SecondName,@ThirdName,@LastName,@DateOfBirth,@Gendor,@Address,@Phone,@Email,@NationalityCountryID,@ImagePath); " +
+                "SELECT SCOPE_IDENTITY();";
+
+            SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+            sqlCommand.Parameters.AddWithValue("@NationalNo", personDto.NationalNo ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@FirstName", personDto.FirstName ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@SecondName", personDto.SecondName ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@ThirdName", personDto.ThirdName ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@LastName", personDto.LastName ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@DateOfBirth", personDto.DateOfBirth);
+            sqlCommand.Parameters.AddWithValue("@Gendor", personDto.Gendor );
+            sqlCommand.Parameters.AddWithValue("@Address", personDto.Address ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@Phone", personDto.Phone ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@NationalityCountryID", personDto.NationalityCountryID);
+            sqlCommand.Parameters.AddWithValue("@ImagePath", personDto.ImagePath ?? (object)DBNull.Value);
+
+            try
+            {
+                sqlConnection.Open();
+                object result = sqlCommand.ExecuteScalar();
+                if(result != null && int.TryParse(result.ToString(),out int personId))
+                {
+                    personID = personId;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return personID;
+        }
+
+        public static bool UpdatePerson(int personID, PersonDto personDto)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection sqlConnection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string sqlQuery =
+                "UPDATE [People] SET " +
+                "[NationalNo] = @NationalNo, " +
+                "[FirstName] = @FirstName, " +
+                "[SecondName] = @SecondName, " +
+                " [ThirdName] = @ThirdName, " +
+                "[LastName] = @LastName, " +
+                "[DateOfBirth] = @DateOfBirth," +
+                "[Gendor] = @Gendor, " +
+                "[Address] = @Address, " +
+                "[Phone] = @Phone, " +
+                "[Email] = @Email, " +
+                "[NationalityCountryID] = @NationalityCountryID, " +
+                "[ImagePath] = @ImagePath " +
+                "WHERE PersonID = @PersonID ";
+
+            SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+            sqlCommand.Parameters.AddWithValue("@PersonID", personID);
+            sqlCommand.Parameters.AddWithValue("@NationalNo", personDto.NationalNo ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@FirstName", personDto.FirstName ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@SecondName", personDto.SecondName ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@ThirdName", personDto.ThirdName ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@LastName", personDto.LastName ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@DateOfBirth", personDto.DateOfBirth);
+            sqlCommand.Parameters.AddWithValue("@Gendor", personDto.Gendor);
+            sqlCommand.Parameters.AddWithValue("@Address", personDto.Address ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@Phone", personDto.Phone ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@NationalityCountryID", personDto.NationalityCountryID);
+            sqlCommand.Parameters.AddWithValue("@ImagePath", personDto.ImagePath ?? (object)DBNull.Value);
+
+            try
+            {
+                sqlConnection.Open();
+                rowsAffected = sqlCommand.ExecuteNonQuery();
+            }
+            catch
+            {
+                rowsAffected = 0;
+                throw;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return (rowsAffected > 0);
+        }
+
+
+        public static bool DeletePerson(int personID)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection sqlConnection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string sqlQuery =
+                "DELETE FROM [People] WHERE PersonID = @PersonID ";
+
+            SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+            sqlCommand.Parameters.AddWithValue("@PersonID", personID);
+
+            try
+            {
+                sqlConnection.Open();
+                rowsAffected = sqlCommand.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return (rowsAffected > 0);
         }
     }
 }

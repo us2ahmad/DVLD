@@ -1,15 +1,15 @@
-﻿using DVLD_DataAccessLayer;
+﻿using DVLD_BusinessLayer.Events;
+using DVLD_DataAccessLayer;
 using DVLD_DataAccessLayer.Dtos;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Net;
+using System.Security.Policy;
 
 namespace DVLD_BusinessLayer
 {
     public class clsPerson
     {
-     
         public int PersonID { set; get; }
         public string NationalNo { set; get; }
         public string FirstName { set; get; }
@@ -23,6 +23,8 @@ namespace DVLD_BusinessLayer
         public string Email { set; get; }
         public int NationalityCountryID { set; get; }
         public string ImagePath { set; get; }
+        private enMode _Mode { get; set; }
+
 
         public clsPerson()
         {
@@ -39,6 +41,7 @@ namespace DVLD_BusinessLayer
             Email = string.Empty;
             NationalityCountryID = -1;
             ImagePath = string.Empty;
+            _Mode = enMode.Add;
         }
 
         public clsPerson(PersonDto personDto)
@@ -56,6 +59,7 @@ namespace DVLD_BusinessLayer
             Email = personDto.Email;
             NationalityCountryID = personDto.NationalityCountryID;
             ImagePath = personDto.ImagePath;
+            _Mode = enMode.Update;
         }
 
         private clsPerson(int personID, string nationalNo, string firstName, string secondName, string thirdName, 
@@ -76,6 +80,56 @@ namespace DVLD_BusinessLayer
             ImagePath = imagePath;
         }
 
+
+
+        private bool _AddNewPerson()
+        {
+            PersonDto personDto = new PersonDto
+            { 
+                PersonID = this.PersonID,
+                NationalNo = this.NationalNo,
+                FirstName = this.FirstName,
+                SecondName = this.SecondName,
+                ThirdName = this.ThirdName,
+                LastName = this.LastName,
+                DateOfBirth = this.DateOfBirth,
+                Gendor = this.Gendor,
+                Address = this.Address,
+                Phone = this.Phone,
+                Email = this.Email,
+                NationalityCountryID = this.NationalityCountryID,
+                ImagePath = this.ImagePath,
+            };
+
+            this.PersonID = clsDataAccessPerson.AddPerson(personDto);
+
+            return this.PersonID != -1;
+        }
+
+        public bool Save()
+        {
+            switch (_Mode)
+            {
+                case enMode.Add:
+                    {
+                        if (_AddNewPerson())
+                        {
+                            _Mode = enMode.Update;
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                case enMode.Update:
+                    {
+                        return false; //_UpdateContact();
+                    }
+            }
+
+            return false;
+        }
         public static clsPerson GetPersonByID(int PersonID)
         {
             if (clsDataAccessPerson.GetPersonByID(PersonID,out PersonDto personDto))
@@ -88,6 +142,16 @@ namespace DVLD_BusinessLayer
         public static DataTable GetAllPerson()
         {
             return clsDataAccessPerson.GetAllPerson();
+        }
+
+        public static bool DeletePerson(int personID)
+        {
+            bool deleted = clsDataAccessPerson.DeletePerson(personID);
+            if (deleted)
+            {
+                PersonEvents.OnPersonChanged();
+            }
+            return deleted;
         }
     }
 }
