@@ -11,13 +11,13 @@ namespace DVLD_PresentationLayer.Forms
             this.WindowState = FormWindowState.Maximized;
         }
 
-        private void tsmi_LogOut_Click(object sender, System.EventArgs e)
+        private void tsmi_SignOut_Click(object sender, System.EventArgs e)
         {
             Global.User = new clsUser(); 
             this.Close();
         }
 
-        private void toolStripMenuItem2_Click(object sender, System.EventArgs e)
+        private void tsmi_People_Click(object sender, System.EventArgs e)
         {
             Form frm = new frmManagePerson();
             frm.ShowDialog();
